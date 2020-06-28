@@ -1,8 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
-import sun.util.resources.Bundles;
-
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,28 +11,26 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     private String title;
     private String isbn;
 
     @ManyToMany
-    @JoinTable(name= "author_book", joinColoumns = @JoinColumn(name - "book_id"),
-        inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))   //no semi colon as its joining
+                                                                    //the column to authors below
+    private Set<Author> authors = new HashSet<>();
 
-    //empty constructor
+    //JPA Requires 0 args constructor
     public Book() {
     }
 
     //created constructor
-    public Book(String title, String isbn, Set<Author> authors) {
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
-        this.authors = authors;
     }
+
     //getters+setters
-
-
     public Long getId() {
         return id;
     }
@@ -64,5 +61,32 @@ public class Book {
 
     public void setAuthors(Set<Author> authors) {
         this.authors = authors;
+    }
+
+    //implements tostring method to show properties of object
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", authors=" + authors +
+                '}';
+    }
+
+    //sets up equals and hashcode function
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        return id != null ? id.equals(book.id) : book.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }
