@@ -63,7 +63,7 @@ public class Author {
         this.books = books;
     }
 
-    //implements tostring method to show properties of object
+    //implements toString method to show properties of object
     @Override
     public String toString() {
         return "Author{" +
