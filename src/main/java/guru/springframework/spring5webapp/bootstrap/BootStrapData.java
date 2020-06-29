@@ -18,7 +18,7 @@ public class BootStrapData implements CommandLineRunner {
     private final BookRepo bookRepo;
     private final PublisherRepo publisherRepo;
 
-    //contructer that makes sure the class can use the repos
+    //constructor that makes sure the class can use the repos
     public BootStrapData(AuthorRepo authorRepo, BookRepo bookRepo, PublisherRepo publisherRepo) {
         this.authorRepo = authorRepo;
         this.bookRepo = bookRepo;
