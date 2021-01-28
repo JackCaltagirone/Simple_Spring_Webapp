@@ -20,11 +20,10 @@ public class AuthorController {
 	@RequestMapping("/authors")
 	public String getAuthors(Model model) {
 		
-		//looks at book repo for list of authors
-        model.addAttribute("author", authorRepo.findAll());
+		//looks at author repo for list of authors
+        model.addAttribute("authors", authorRepo.findAll());
 		
-		return "authers/list";
-		
+		return "authors/list";
 	}
 	
 	
