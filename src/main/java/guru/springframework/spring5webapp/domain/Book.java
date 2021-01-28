@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity 
 public class Book {
 
     @Id
@@ -18,7 +18,8 @@ public class Book {
     @ManyToOne
     private Publisher publisher;
 
-    @ManyToMany
+    @ManyToMany //sets many-to-many relationship between books and authors
+    //jointable sets up the properties in the table
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))   //no semi colon as its joining
                                                                     //the column to authors below

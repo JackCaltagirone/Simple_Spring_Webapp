@@ -17,6 +17,7 @@ public class Author {
     private String firstName;
     private String lastName;
 
+    //sets many-to-many relationship between books and authors
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
@@ -24,7 +25,7 @@ public class Author {
     public Author() {
     }
 
-    //constructor
+    //Author constructor
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,7 +64,7 @@ public class Author {
         this.books = books;
     }
 
-    //implements toString method to show properties of object
+    //implements toString method to show properties of Author
     @Override
     public String toString() {
         return "Author{" +

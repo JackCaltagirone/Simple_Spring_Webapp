@@ -39,7 +39,7 @@ public class BootStrapData implements CommandLineRunner {
 
         publisherRepo.save(publisher);
 
-        //adds author to the book adn the book to the author
+        //adds author to the book and the book to the author
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
 
