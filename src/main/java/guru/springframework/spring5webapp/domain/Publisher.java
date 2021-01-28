@@ -18,7 +18,7 @@ public class Publisher {
     private String state;
     private int zip;
 
-    //one to many as on publisher can have mnay books
+    //one to many as on publisher can have many books
     @OneToMany
     @JoinColumn(name = "publisher_id")
     private Set<Book> books = new HashSet<>();
