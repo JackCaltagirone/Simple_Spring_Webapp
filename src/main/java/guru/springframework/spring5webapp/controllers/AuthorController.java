@@ -11,6 +11,7 @@ public class AuthorController {
 	//instance of AuthorRepo. injects authorRepo
 	private final AuthorRepo authorRepo;
     //controller so its  Spring managed controller
+	//create constructer here
 	public AuthorController(AuthorRepo authorRepo) {
 		this.authorRepo = authorRepo;
 	}
@@ -22,7 +23,7 @@ public class AuthorController {
 		//looks at book repo for list of authors
         model.addAttribute("author", authorRepo.findAll());
 		
-		return "Auther/list";
+		return "authers/list";
 		
 	}
 	
